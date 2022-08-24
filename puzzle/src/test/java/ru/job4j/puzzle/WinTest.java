@@ -41,7 +41,7 @@ public class WinTest {
     }
 
     @Test
-    public void whenNotWinl() {
+    public void whenNotWinL() {
         int[][] board = {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0},

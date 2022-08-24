@@ -12,9 +12,10 @@ public class Win {
         }
         return result;
     }
+
     public static boolean monoVertical(int[][] board, int column) {
         boolean result = true;
-        for (int [] chars : board) {
+        for (int[] chars : board) {
             if (chars[column] != 1) {
                 result = false;
                 break;
