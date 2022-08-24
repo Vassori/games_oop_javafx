@@ -25,23 +25,23 @@ public class Puzzle extends Application {
     private final int size = 5;
     private final Logic logic = new Logic(size);
 
-    private Rectangle buildRectangle(int x, int y) {
+    private Rectangle buildRectangle(int x, int y, int size) {
         Rectangle rect = new Rectangle();
-        rect.setX(x * 40);
-        rect.setY(y * 40);
-        rect.setHeight(40);
-        rect.setWidth(40);
+        rect.setX(x * size);
+        rect.setY(y * size);
+        rect.setHeight(size);
+        rect.setWidth(size);
         rect.setFill(Color.WHITE);
         rect.setStroke(Color.BLACK);
         return rect;
     }
 
-    private Rectangle buildFigure(int x, int y, String image) {
+    private Rectangle buildFigure(int x, int y, int size, String image) {
         Rectangle rect = new Rectangle();
         rect.setX(x);
         rect.setY(y);
-        rect.setHeight(30);
-        rect.setWidth(30);
+        rect.setHeight(size);
+        rect.setWidth(size);
         Image img = new Image(this.getClass().getClassLoader().getResource(image).toString());
         rect.setFill(new ImagePattern(img));
         final Rectangle momento = new Rectangle(x, y);
@@ -53,8 +53,8 @@ public class Puzzle extends Application {
         );
         rect.setOnMouseDragged(
                 event -> {
-                    rect.setX(event.getX() - 30 / 2);
-                    rect.setY(event.getY() - 30 / 2);
+                    rect.setX(event.getX() - size / 2);
+                    rect.setY(event.getY() - size / 2);
                 }
         );
         rect.setOnMouseReleased(
@@ -89,7 +89,7 @@ public class Puzzle extends Application {
         for (int y = 0; y != this.size; y++) {
             for (int x = 0; x != this.size; x++) {
                 panel.getChildren().add(
-                        this.buildRectangle(x, y)
+                        this.buildRectangle(x, y, 40)
                 );
             }
         }
@@ -148,6 +148,7 @@ public class Puzzle extends Application {
                 this.buildFigure(
                         position.getX() * 40 + 5,
                         position.getY() * 40 + 5,
+                        30,
                         figure.icon()
                 )
         );
