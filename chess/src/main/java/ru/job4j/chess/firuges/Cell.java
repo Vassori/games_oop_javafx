@@ -13,9 +13,9 @@ public enum Cell {
     private final int x;
     private final int y;
 
-    Cell(int cx, int cy) {
-        x = cx;
-        y = cy;
+    Cell(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     public int getX() {
@@ -27,13 +27,11 @@ public enum Cell {
     }
 
     public static Cell findBy(int x, int y) {
-        Cell rsl = null;
         for (Cell cell : values()) {
             if (cell.x == x && cell.y == y) {
-                rsl = cell;
-                break;
+                return cell;
             }
         }
-        return rsl;
+        return null;
     }
 }
